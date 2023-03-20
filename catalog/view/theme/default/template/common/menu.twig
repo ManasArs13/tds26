@@ -1,0 +1,43 @@
+{% if categories %}
+<div class="container-fluid">
+  <nav id="menu" class="navbar" style="display: none;">
+    <button type="button" onclick="CloseMenu()" class="close" aria-label="Close" style="margin: 15px;"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <h2 style="margin: 25px;">Каталог</h2>
+    <div style="margin: 25px;" class="row">
+     {% if categories %}   
+        {% for category in categories %}
+            <div class="col-sm-3">
+                <a href="{{ category.href }}"><img src="{{ category.thumb }}" alt="" class="img-thumbnail border-0">{{ category.name }}</a>
+            </div>
+        {% endfor %}
+     {% endif %} 
+    </div>
+    
+ {#   <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        {% for category in categories %}
+        {% if category.children %}
+        <li class="dropdown"><a href="{{ category.href }}"><img src="{{ category.thumb }}" alt="" class="img-thumbnail border-0">
+        {{ category.name }}</a>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner"> {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+              <ul class="list-unstyled">
+                {% for child in children %}
+                <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endfor %}</div>
+            </div>
+        </li>
+        {% else %}
+        <li><a href="{{ category.href }}">
+        <img src="{{ category.thumb }}" alt="" class="img-thumbnail border-0">
+        {{ category.name }}</a></li>
+        {% endif %}
+        {% endfor %}
+        <li><a href="https://tds26.ru/dlya-optovyh-pokupatelej"><img src="https://tds26.ru/image/catalog/kategorii/dlyaopt25.png" alt="" class="img-thumbnail border-0">Для оптовых покупателей</a></li>
+      </ul>
+    </div>#}
+  </nav>
+</div>
+{% endif %} 
